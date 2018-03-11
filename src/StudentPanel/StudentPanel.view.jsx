@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeOnlyContainer, Input, Select} from 'pastate'
-import { store, initState, actions } from './InfoPanel.model'
-import './InfoPanel.css'
+import { store, initState, actions } from './StudentPanel.model'
+import './StudentPanel.css'
 
 const isBoyOptions = [{
     value: true,
@@ -11,7 +11,11 @@ const isBoyOptions = [{
     tag: '女'
 }]
 
-class InfoPanel extends React.PureComponent {
+class StudentPanel extends React.PureComponent {
+
+    componentDidMount(){
+        actions.init()
+    }
 
     render() {
         let state = this.props.state
@@ -75,16 +79,20 @@ class InfoPanel extends React.PureComponent {
                             </div>
                             <div className="info-panel-detail-item">
                                 年龄：
-                                <button className="info-panel-detail-btn btn-change-age" onClick={actions.increaseAge}>
+                                <button className="info-panel-detail-btn btn-change-age" onClick={actions.decreaseAge}>
                                     -
                                 </button>
                                 <Input value={selectedStudent.age} type="number" className='input-text input-age' />
-                                <button className="info-panel-detail-btn btn-change-age" onClick={actions.decreaseAge}>
+                                <button className="info-panel-detail-btn btn-change-age" onClick={actions.increaseAge}>
                                     +
                                 </button>
                             </div>
                             <div className="info-panel-detail-item">
-                                性别：<Select value={selectedStudent.isBoy} options={isBoyOptions} className='input-is-boy'/>
+                                性别：<Select 
+                                        value={selectedStudent.isBoy} 
+                                        options={isBoyOptions} 
+                                        className='input-is-boy'
+                                    />
                             </div>
                             <div className="info-panel-detail-item">
                                 简介：<Input value={selectedStudent.introduction} className='input-text'/>
@@ -125,4 +133,4 @@ class InfoPanel extends React.PureComponent {
     }
 }
 
-export default makeOnlyContainer(InfoPanel, store)
+export default makeOnlyContainer(StudentPanel, store)

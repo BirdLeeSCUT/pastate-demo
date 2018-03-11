@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "antd": "^3.2.3",
-    "pastate": "^0.6.17",
+    "axios": "^0.18.0",
+    "pastate": "^0.6.19",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1"
