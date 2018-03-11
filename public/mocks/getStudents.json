@@ -1,0 +1,10 @@
+{
+    "result": "ok",
+    "students": [{
+        "name": "张小明",
+        "studentNumber": "2018123265323",
+        "age": 22,
+        "isBoy": true,
+        "introduction": "喜欢打篮球"
+    }]
+}
