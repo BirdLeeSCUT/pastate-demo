@@ -1,9 +1,19 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
+import { makeApp } from 'pastate';
 import registerServiceWorker from './registerServiceWorker';
-import container from './MyPastateApp';
-import { view } from './StudentPanel';
 import './index.css'
 
-ReactDOM.render(view, document.getElementById('root'));
+import * as StudentPanel from './StudentPanel';
+// import * as Navigator from './Navigator'
+
+const rootStore = {
+    student: StudentPanel.store
+}
+
+ReactDOM.render(
+    makeApp(<StudentPanel.view />, StudentPanel.store),
+    document.getElementById('root')
+);
 
 registerServiceWorker();

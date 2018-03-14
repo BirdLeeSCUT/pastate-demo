@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeOnlyContainer, Input, Select} from 'pastate'
+import { makeContainer, Input, Select} from 'pastate'
 import { store, initState, actions } from './StudentPanel.model'
 import './StudentPanel.css'
 
@@ -16,6 +16,8 @@ class StudentPanel extends React.PureComponent {
     componentDidMount(){
         actions.init()
     }
+
+
 
     render() {
         let state = this.props.state
@@ -79,11 +81,17 @@ class StudentPanel extends React.PureComponent {
                             </div>
                             <div className="info-panel-detail-item">
                                 年龄：
-                                <button className="info-panel-detail-btn btn-change-age" onClick={actions.decreaseAge}>
+                                <button 
+                                    className="info-panel-detail-btn btn-change-age" 
+                                    onClick={actions.decreaseAge}
+                                >
                                     -
                                 </button>
                                 <Input value={selectedStudent.age} type="number" className='input-text input-age' />
-                                <button className="info-panel-detail-btn btn-change-age" onClick={actions.increaseAge}>
+                                <button 
+                                    className="info-panel-detail-btn btn-change-age" 
+                                    onClick={actions.increaseAge}
+                                >
                                     +
                                 </button>
                             </div>
@@ -133,4 +141,4 @@ class StudentPanel extends React.PureComponent {
     }
 }
 
-export default makeOnlyContainer(StudentPanel, store)
+export default makeContainer(StudentPanel)

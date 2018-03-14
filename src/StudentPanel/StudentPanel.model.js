@@ -1,8 +1,8 @@
-import { Pastore, logActions } from 'pastate'
+import { Pastore, logActions, dispalyActionNamesInReduxTool, createStore } from 'pastate'
 import axios from 'axios'
 
 const initState = {
-    initialized: false,
+    initialized: false, // 初始化状态
     /** @type { "loading" | "ok" | "error" } */
     status: 'loading', // 加载状态
     isEditting: false, // 是否在编辑中
@@ -20,17 +20,17 @@ const studentType = {
 }
 
 /***** MOCK AREA *****/
-initState.status = 'ok'
-// initState.isEditting = true
-initState.students = [studentType, studentType]
-initState.selected = 0
+// initState.status = 'ok'
+initState.isEditting = true
+// initState.students = [studentType, studentType]
+// initState.selected = 0
 
 
 const actions = {
     init(){
         if(!state.initialized){
             state.initialized = true
-            // actions.loadStudents()
+            actions.loadStudents()
         }
     },
     loadStudents(){
@@ -52,6 +52,7 @@ const actions = {
     switchEditting(){
         state.isEditting = !state.isEditting
     },
+    /** @param {number} index 学生数组索引号 */
     selectStudent(index){
         state.selected = index
         state.isEditting && (state.isEditting = false)
@@ -59,18 +60,27 @@ const actions = {
     increaseAge(){
         state.students[state.selected].age += 1
     },
+    /** 减少年龄 */
     decreaseAge(){
         state.students[state.selected].age -= 1
     }
 }
 
-/** @type {Pastore<initState>} */
-const store = new Pastore(initState);
-let state = store.state;
-store.name = 'StudentPanel';
-store.actions = actions;
+// /** @type {Pastore<initState>} */
+// const store = new Pastore(initState);
+// let state = store.state;
+// store.name = 'StudentPanel';
+// store.actions = actions;
+// store.actionMiddlewares = [logActions(), dispalyActionNamesInReduxTool(true)]
 
-// 在需要调试时开启即可
-// store.actionMiddlewares = [logActions()]
+const store = createStore({
+    name: 'StudentPanel',
+    initState: initState,
+    actions: actions,
+    middlewares: [logActions(), dispalyActionNamesInReduxTool(true)]
+})
+
+const { state } = store
+
 
 export {store, actions, initState}
