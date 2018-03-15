@@ -17,8 +17,6 @@ class StudentPanel extends React.PureComponent {
         actions.init()
     }
 
-
-
     render() {
         let state = this.props.state
         return (
@@ -129,8 +127,11 @@ class StudentPanel extends React.PureComponent {
                                 简介：{selectedStudent.introduction}
                             </div>
                             <div className="info-panel-detail-btn-div">
-                                <button className="info-panel-detail-btn" onClick={actions.switchEditting}>
+                                <button className="info-panel-detail-btn btn-bootom" onClick={actions.switchEditting}>
                                     修改
+                                </button>
+                                <button className="info-panel-detail-btn btn-bootom" onClick={actions.deleteSelectedStudent}>
+                                    删除
                                 </button>
                             </div>
                         </div>
@@ -141,4 +142,4 @@ class StudentPanel extends React.PureComponent {
     }
 }
 
-export default makeContainer(StudentPanel)
+export default makeContainer(StudentPanel, 'student')

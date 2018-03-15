@@ -1,18 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { makeApp } from 'pastate';
+import { makeApp, combineStores } from 'pastate';
 import registerServiceWorker from './registerServiceWorker';
-import './index.css'
+import './index.css';
+import { Provider } from 'react-redux';
 
 import * as StudentPanel from './StudentPanel';
-// import * as Navigator from './Navigator'
+import * as Navigator from './Navigator';
+import * as ClassPanel from './ClassPanel';
 
 const rootStore = {
-    student: StudentPanel.store
+    nav: Navigator.store,
+    student: StudentPanel.store,
+    class: ClassPanel.store
 }
 
 ReactDOM.render(
-    makeApp(<StudentPanel.view />, StudentPanel.store),
+    makeApp(<Navigator.view />, rootStore),
     document.getElementById('root')
 );
 

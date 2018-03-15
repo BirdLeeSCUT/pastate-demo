@@ -7,10 +7,16 @@
         "isBoy": true,
         "introduction": "喜欢打篮球"
     },{
-        "name": "张小明",
+        "name": "张二明",
         "studentNumber": "2018123265324",
         "age": 23,
         "isBoy": false,
         "introduction": "喜欢弹钢琴"
+    },{
+        "name": "张小明",
+        "studentNumber": "2018123265325",
+        "age": 23,
+        "isBoy": false,
+        "introduction": "喜欢写代码"
     }]
 }

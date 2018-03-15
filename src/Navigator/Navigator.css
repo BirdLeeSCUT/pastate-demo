@@ -1,0 +1,42 @@
+
+.nav{
+    width: 400px;
+    background: #0099cc;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0px;
+    margin-bottom: 6px;
+}
+
+.nav-title{
+    padding: 4px;
+    font-size: 30px;
+}
+
+.nav-bar{
+    padding: 4px;
+}
+
+.nav-item{
+    display: inline-block;
+    padding: 6px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    margin: 0px 20px;
+    cursor: pointer;
+}
+.nav-item:hover{
+    background-color: rgba(0,0,0,0.05);
+}
+
+.nav-item-active{
+    background-color: rgba(0,0,0,0.1);
+}
+
+.nav-item-active:hover{
+    background-color: rgba(0,0,0,0.1);
+}
+
+.main-panel{
+    width: 400px;
+}

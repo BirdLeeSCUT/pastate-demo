@@ -21,7 +21,7 @@ const studentType = {
 
 /***** MOCK AREA *****/
 // initState.status = 'ok'
-initState.isEditting = true
+// initState.isEditting = true
 // initState.students = [studentType, studentType]
 // initState.selected = 0
 
@@ -63,6 +63,12 @@ const actions = {
     /** 减少年龄 */
     decreaseAge(){
         state.students[state.selected].age -= 1
+    },
+    deleteSelectedStudent(){
+        if(state.selected == state.students.length - 1){
+            state.selected = state.students.length - 2
+        }
+        state.students.splice(state.selected, 1)
     }
 }
 

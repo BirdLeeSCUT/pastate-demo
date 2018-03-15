@@ -4,6 +4,9 @@ const initState = {
 
 }
 
+/**** MOCK AREA *****/
+
+
 const actions = {
 
 }

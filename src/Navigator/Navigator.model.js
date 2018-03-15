@@ -1,11 +1,18 @@
 import { createStore } from 'pastate';
 
 const initState = {
-
+    /** @type {'student' | 'class'} */
+    selected: 'student'
 }
 
-const actions = {
+/**** MOCK AREA ****/
+// initState.selected = 'class'
 
+const actions = {
+    /** @param {'student' | 'class'} tab */
+    selectTab(tab){
+        state.selected = tab
+    }
 }
 
 const store = createStore({
