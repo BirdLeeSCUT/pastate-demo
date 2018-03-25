@@ -35,7 +35,7 @@ class Navigator extends React.PureComponent{
                 </div>
                 <div className="main-panel">
                     <Switch>
-                        <Redirect exact from='/' to='/student/0'/>
+                        <Redirect exact from='/' to='/student'/>
                         <Route path="/student" component={StudentPanel.view}/>
                         <Route path="/class" component={ClassPanel.view}/>
                     </Switch>

@@ -17,7 +17,7 @@ const storeTree = {
 
 ReactDOM.render(
     makeApp(
-        <BrowserRouter basename="/pastate-demo">
+        <BrowserRouter >
             <Navigator.view />
         </BrowserRouter>,
         storeTree
