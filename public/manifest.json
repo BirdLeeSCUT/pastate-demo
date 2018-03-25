@@ -1,5 +1,5 @@
 {
-  "short_name": "React App",
+  "short_name": "pastate 班级信息管理系统",
   "name": "Create React App Sample",
   "icons": [
     {
@@ -8,6 +8,7 @@
       "type": "image/x-icon"
     }
   ],
+  "homepage": "https://birdleescut.github.io/pastate-demo",
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",

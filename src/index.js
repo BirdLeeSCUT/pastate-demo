@@ -17,9 +17,9 @@ const storeTree = {
 
 ReactDOM.render(
     makeApp(
-        <HashRouter>
+        <BrowserRouter basename="/pastate-demo">
             <Navigator.view />
-        </HashRouter>,
+        </BrowserRouter>,
         storeTree
     ),
     document.getElementById('root')
