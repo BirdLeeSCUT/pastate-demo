@@ -25,7 +25,6 @@ const studentType = {
 // initState.students = [studentType, studentType]
 // initState.selected = 0
 
-
 const actions = {
     init(){
         if(!state.initialized){
@@ -56,6 +55,15 @@ const actions = {
     selectStudent(index){
         state.selected = index
         state.isEditting && (state.isEditting = false)
+
+        // **** 使用 react-router ****
+        // console.log(history.location);
+        // history.push(index+'')
+        // history.push('/student/' + index)
+        // history.goBack() // or .go(-1)
+
+        // console.log(window.location)
+
     },
     increaseAge(){
         state.students[state.selected].age += 1
@@ -83,7 +91,7 @@ const store = createStore({
     name: 'StudentPanel',
     initState: initState,
     actions: actions,
-    middlewares: [logActions(), dispalyActionNamesInReduxTool(true)]
+    middlewares: [logActions(), dispalyActionNamesInReduxTool()]
 })
 
 const { state } = store

@@ -1,22 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { makeApp, combineStores } from 'pastate';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
-import { Provider } from 'react-redux';
 
 import * as StudentPanel from './StudentPanel';
 import * as Navigator from './Navigator';
 import * as ClassPanel from './ClassPanel';
 
-const rootStore = {
+const storeTree = {
     nav: Navigator.store,
     student: StudentPanel.store,
     class: ClassPanel.store
 }
 
 ReactDOM.render(
-    makeApp(<Navigator.view />, rootStore),
+    makeApp(
+        <BrowserRouter>
+            <Navigator.view />
+        </BrowserRouter>,
+        storeTree
+    ),
     document.getElementById('root')
 );
 

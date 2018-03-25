@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeContainer, Input, Select} from 'pastate'
 import { store, initState, actions } from './StudentPanel.model'
+import { Route, NavLink, withRouter, Redirect, Switch } from 'react-router-dom'
 import './StudentPanel.css'
 
 const isBoyOptions = [{
@@ -51,14 +52,19 @@ class StudentPanel extends React.PureComponent {
                 </div>
             )
         }
-        let selectedStudent = state.students[state.selected];
+        
+        // let selected = this.props.match.params.id;
+        let selected = state.selected;
+
+        let selectedStudent = state.students[selected];
+
         return (
             <div className="info-panel-ok">
                 <div className="info-panel-list">
                     {state.students.map((student, index) => (
                         <div 
                             key={index} 
-                            className={"info-panel-list-item" + (state.selected == index ? " active" : "")}
+                            className={"info-panel-list-item" + (selected == index ? " active" : "")}
                             onClick={() => actions.selectStudent(index)}
                             >
                             {student.name}

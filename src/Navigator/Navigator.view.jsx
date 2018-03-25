@@ -1,6 +1,7 @@
 import React from 'react';
-import { makeContainer } from 'pastate';
+import { makeContainer, makeCacheable } from 'pastate';
 import { initState, actions } from './Navigator.model';
+import { Route, NavLink, withRouter, Redirect, Switch } from 'react-router-dom'
 import './Navigator.css';
 
 import * as StudentPanel from '../StudentPanel';
@@ -16,35 +17,58 @@ class Navigator extends React.PureComponent{
                 <div className="nav">
                     <div className="nav-title">班级信息管理系统</div>
                     <div className="nav-bar">
-                        <span 
-                            className={"nav-item" + (state.selected == 'student' ? " nav-item-active" : "" )}
-                            onClick={() => actions.selectTab('student')}
+                        <NavLink 
+                            className="nav-item"
+                            activeClassName="nav-item-active"
+                            to="/student"
                         >
-                            学生({this.props.studentsCount})
-                        </span>
-                        <div 
-                            className={"nav-item" + (state.selected == 'class' ? " nav-item-active" : "" )}
-                            onClick={() => actions.selectTab('class')}
+                            学生({this.props.count.student})
+                        </NavLink>
+                        <NavLink 
+                            className="nav-item"
+                            activeClassName="nav-item-active"
+                            to="/class"
                         >
-                            课程({this.props.classesCount})
-                        </div>
+                            课程({this.props.count.class})
+                        </NavLink>
                     </div>
                 </div>
                 <div className="main-panel">
-                {
-                    state.selected == 'student' ?
-                        <StudentPanel.view />
-                        :
-                        <ClassPanel.view />
-                }
+                    <Switch>
+                        <Redirect exact from='/' to='/student/0'/>
+                        <Route path="/student" component={StudentPanel.view}/>
+                        <Route path="/class" component={ClassPanel.view}/>
+                    </Switch>
                 </div>
             </div>
         )
     }
 }
 
-export default makeContainer(Navigator, state => ({
-    state: state.nav,
-    studentsCount: state.student.students.length,
-    classesCount: state.class.classes.length
+
+// export default withRouter(makeContainer(Navigator, state => ({
+//     state: state.nav,
+//     studentsCount: state.student.students.length,
+//     classesCount: state.class.classes.length
+// })))
+
+const getCount = makeCacheable((studentLength, classLength) => ({
+    student: studentLength,
+    class: classLength
 }))
+
+// export default withRouter(makeContainer(Navigator, state => ({
+//     state: state.nav,
+//     count: {
+//         student: state.student.students.length,
+//         class: state.class.classes.length
+//     }
+// })))
+
+export default withRouter(makeContainer(Navigator, state => ({
+    state: state.nav,
+    count: getCount(
+        state.student.students.length, 
+        state.class.classes.length
+    )
+})))

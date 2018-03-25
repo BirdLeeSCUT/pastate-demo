@@ -18,12 +18,14 @@
 }
 
 .nav-item{
+    text-decoration: none;
     display: inline-block;
     padding: 6px 20px;
     font-size: 16px;
     border-radius: 6px;
     margin: 0px 20px;
     cursor: pointer;
+    color: #fff;
 }
 .nav-item:hover{
     background-color: rgba(0,0,0,0.05);
@@ -33,9 +35,6 @@
     background-color: rgba(0,0,0,0.1);
 }
 
-.nav-item-active:hover{
-    background-color: rgba(0,0,0,0.1);
-}
 
 .main-panel{
     width: 400px;
