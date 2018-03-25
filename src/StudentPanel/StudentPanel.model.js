@@ -34,7 +34,7 @@ const actions = {
     },
     loadStudents(){
         state.status = 'loading'
-        axios.get('/mocks/getStudents.json')
+        axios.get('./mocks/getStudents.json')
             .then(res => {
                 if(res.data.result == 'ok'){
                     state.status = 'ok'

@@ -17,9 +17,9 @@ const storeTree = {
 
 ReactDOM.render(
     makeApp(
-        <BrowserRouter>
+        <HashRouter>
             <Navigator.view />
-        </BrowserRouter>,
+        </HashRouter>,
         storeTree
     ),
     document.getElementById('root')
